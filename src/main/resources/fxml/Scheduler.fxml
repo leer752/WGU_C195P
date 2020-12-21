@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="898.0" prefWidth="1097.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.SchedulerController">
+   <children>
+      <VBox layoutX="22.0" layoutY="13.0" prefHeight="889.0" prefWidth="1054.0">
+         <children>
+            <HBox prefHeight="29.0" prefWidth="783.0">
+               <children>
+                  <HBox prefHeight="30.0" prefWidth="421.0">
+                     <children>
+                        <Label fx:id="customersTitleLabel" prefHeight="29.0" prefWidth="504.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="647.0">
+                     <children>
+                        <TextField fx:id="customerSearchField" prefHeight="30.0" prefWidth="230.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <TableView fx:id="customerTableView" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="customerIDCol" prefWidth="63.0" />
+                <TableColumn fx:id="customerNameCol" prefWidth="242.0" />
+                  <TableColumn fx:id="customerAddressCol" prefWidth="368.0" />
+                  <TableColumn fx:id="customerPostalCol" prefWidth="133.0" />
+                  <TableColumn fx:id="customerPhoneCol" prefWidth="247.0" />
+              </columns>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </TableView>
+            <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="783.0">
+               <children>
+                  <Label fx:id="customerErrorLabel" prefHeight="44.0" textFill="RED" wrapText="true">
+                     <font>
+                        <Font name="System Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="customerAddBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addCustomer">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="customerUpdateBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateCustomer">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="customerDeleteBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteCustomer">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" top="15.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox prefHeight="36.0" prefWidth="783.0">
+               <children>
+                  <HBox prefHeight="36.0" prefWidth="344.0">
+                     <children>
+                        <Label fx:id="appointmentsTitleLabel" prefHeight="36.0" prefWidth="385.0">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="728.0">
+                     <children>
+                        <RadioButton fx:id="showAllRadioBtn" mnemonicParsing="false" prefHeight="29.0" prefWidth="101.0" selected="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="byDateToggleGrp" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="byWeekRadioBtn" mnemonicParsing="false" prefHeight="29.0" prefWidth="101.0" toggleGroup="$byDateToggleGrp">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="byMonthRadioBtn" mnemonicParsing="false" prefHeight="29.0" prefWidth="101.0" toggleGroup="$byDateToggleGrp">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </RadioButton>
+                        <DatePicker fx:id="appointmentDatePicker" prefHeight="30.0" prefWidth="230.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="47.0" prefWidth="783.0">
+               <children>
+                  <Button fx:id="appointmentPrevBtn" contentDisplay="TEXT_ONLY" mnemonicParsing="false" onAction="#decrementDate" />
+                  <Label fx:id="appointmentFilterLabel" alignment="CENTER" prefHeight="37.0" prefWidth="196.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button fx:id="appointmentNextBtn" contentDisplay="TEXT_ONLY" mnemonicParsing="false" onAction="#incrementDate" />
+               </children></HBox>
+            <TableView fx:id="appointmentTableView" prefHeight="347.0" prefWidth="783.0">
+               <columns>
+                  <TableColumn fx:id="appointmentIDCol" prefWidth="63.0" />
+                  <TableColumn fx:id="appointmentTitleCol" prefWidth="110.0" />
+                  <TableColumn fx:id="appointmentDescCol" prefWidth="184.0" />
+                  <TableColumn fx:id="appointmentLocationCol" prefWidth="164.0" />
+                  <TableColumn fx:id="appointmentContactCol" prefWidth="111.0" />
+                  <TableColumn fx:id="appointmentTypeCol" prefWidth="107.0" />
+                  <TableColumn fx:id="appointmentStartCol" prefWidth="113.0" />
+                  <TableColumn fx:id="appointmentEndCol" prefWidth="117.0" />
+                  <TableColumn fx:id="appointmentCustomerIDCol" prefWidth="84.0" />
+               </columns>
+            </TableView>
+            <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="783.0">
+               <children>
+                  <Label fx:id="appointmentErrorLabel" prefHeight="44.0" textFill="RED" wrapText="true">
+                     <font>
+                        <Font name="System Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="appointmentAddBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addAppointment">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="appointmentUpdateBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateAppointment">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="appointmentDeleteBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteAppointment">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="15.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="783.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="533.0">
+                     <children>
+                        <Button fx:id="logoutBtn" mnemonicParsing="false" onAction="#logout">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="reportsBtn" mnemonicParsing="false" onAction="#goToReports">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="534.0">
+                     <children>
+                        <Button fx:id="clearSelectionsBtn" mnemonicParsing="false" onAction="#clearSelections" prefHeight="30.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="resetDateBtn" mnemonicParsing="false" onAction="#resetPagedDate" prefHeight="30.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
